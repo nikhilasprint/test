@@ -1,0 +1,42 @@
+<div class="landing-page">
+    <h1>Student Grade Portal</h1>
+    <div class="chart-wrapper">
+        <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
+            [options]="pieChartOptions" [plugins]="pieChartPlugins" [legend]="pieChartLegend"
+            (chartClick)="chartClicked($event)">
+        </canvas>
+    </div>
+    <div class="openform form-custom" [hidden]="true">
+        <div class="row">
+            <form class="col-xs-12" [formGroup]="openform">
+                <div class="form-row form-custom" *ngFor="let student of student">
+                    <div class="form-group col-xs-2">
+                        <label for="name">Name</label>
+                        <input type="text" formControlName="name" [ngModel]="student.name" class="form-control" />
+                    </div>
+                    <div class="form-group col-xs-1">
+                        <label for="id">Id</label>
+                        <input type="text" formControlName="id" [ngModel]="student.id" class="form-control">
+                    </div>
+                    <div class="form-group col-xs-2">
+                        <label for="grade">Grade</label>
+                        <input type="text" formControlName="grade" [ngModel]="student.grade" class="form-control" />
+                    </div>
+                    <div class="form-group col-xs-2">
+                        <label for="english">English</label>
+                        <input type="text" formControlName="english" [ngModel]="student.english" class="form-control">
+                    </div>
+                    <div class="form-group col-xs-2">
+                        <label for="maths">Maths</label>
+                        <input type="text" formControlName="maths" [ngModel]="student.maths" class="form-control" />
+                    </div>
+                    <div class="form-group col-xs-2">
+                        <label for="social">Social Studies</label>
+                        <input type="text" formControlName="social" [ngModel]="student.social" class="form-control">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

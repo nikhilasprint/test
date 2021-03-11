@@ -1,0 +1,42 @@
+<div>
+    <table class="table">
+        <thead>
+            <tr class="aspen">
+                <th colspan="2">First Grad Students</th>
+                <th colspan="5">Marks: Out of 100</th>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <th>Age(Click to Edit)</th>
+                <th>Email(Click to Edit)</th>
+                <th>English</th>
+                <th>Maths</th>
+                <th>Sience</th>
+                <th>Social</th>
+            </tr>
+        </thead>
+        <tbody> 
+            <tr *ngFor="let entity of listOfStudents; index as i">
+                
+                <td>{{ entity.name }}</td>
+                <td>
+                    <div *ngIf="!entity.isAgeEditable" (click)="editAge(entity)">{{ entity.age }}</div>
+                    <input type="text" id="{{entity.id}}" *ngIf="entity.isAgeEditable" #age [(ngModel)]="entity.age"
+                        (focusout)="hideShowAge(entity)" placeholder="{{ entity.age }}" />
+                </td>
+                <td class="email-col">
+                    <div *ngIf="!entity.isEmailEditable" id="email" (click)="editEmail(entity)">{{ entity.email }}</div>
+                    <input type="text" *ngIf="entity.isEmailEditable" #email [(ngModel)]="entity.email"
+                        (focusout)="hideShowEmail(entity)" placeholder="{{ entity.email }}" />
+                    <span class="error email-error" *ngIf="entity.emailError">Please provide a valid email!</span>
+                </td>
+                <td>{{ entity.english }}</td>
+                <td>{{ entity.maths }}</td>
+                <td>{{ entity.science }}</td>
+                <td>{{ entity.social }}</td>
+            </tr>
+        </tbody>
+
+    </table>
+
+</div>
